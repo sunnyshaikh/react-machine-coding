@@ -1,5 +1,8 @@
+import Accordion from "./Accordion";
+import { DATA } from "./data";
+
 const App = () => {
-  return <h1>Accordion</h1>;
+  return <Accordion data={DATA} />;
 };
 
 export default App;
