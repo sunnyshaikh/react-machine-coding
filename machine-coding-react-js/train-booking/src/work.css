@@ -1,0 +1,29 @@
+html {
+  background: black;
+}
+
+.seats {
+  display: grid;
+  grid-template-columns: repeat(3, 40px);
+  grid-auto-rows: 40px;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.single-seat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.single-seat.booked {
+  background-color: red;
+  cursor: not-allowed;
+}
+
+.single-seat.pwd {
+  background-color: lightblue;
+  cursor: not-allowed;
+}
