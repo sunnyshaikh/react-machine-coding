@@ -1,0 +1,115 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.toast-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  overflow-x: hidden;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  width: 240px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #000;
+  animation: slide-in 1s forwards;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translate(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translate(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translate(100px);
+    opacity: 0;
+  }
+}
+
+.toast.hide {
+  animation: slide-out 1s forwards;
+}
+
+.toast button {
+  font-size: 0.75rem;
+}
+
+.toast.error {
+  background-color: #dc143c;
+  color: #ffc3c3;
+}
+
+.toast.success {
+  background-color: #00ba00;
+  color: #b8ffb8;
+}
+
+.toast.warning {
+  background-color: #ddda30;
+  color: #6e6e00;
+}
+
+.toast.info {
+  background-color: #00b1ec;
+  color: #0000c5;
+}
