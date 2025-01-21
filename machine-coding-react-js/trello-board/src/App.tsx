@@ -1,5 +1,11 @@
+import Navbar from "./components/navbar/Navbar";
+
 const App = () => {
-  return <h1>App</h1>;
+  return (
+    <main className="app h-screen w-screen bg-gray-900 text-gray-100">
+      <Navbar />
+    </main>
+  );
 };
 
 export default App;
