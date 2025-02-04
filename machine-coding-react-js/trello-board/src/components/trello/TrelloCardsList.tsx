@@ -32,6 +32,10 @@ const TrelloListHeader = ({ cards }: { cards: TrelloCardsType }) => {
   const handleSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key.toLowerCase() !== "enter") return;
     e.preventDefault();
+    if (!title.trim()) {
+      alert("List title required!");
+      return;
+    }
     dispatch(editListTitle({ id: cards.id, title }));
     setIsEditing(false);
   };
