@@ -4,6 +4,7 @@ import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addList } from "../../store/trelloSlices";
 import { RootState } from "../../store/store";
+import FormWrapper from "../dynamicForm/FormWrapper";
 
 const TrelloBoard = () => {
   const [listTitle, setListTitle] = useState("");
@@ -39,35 +40,16 @@ const TrelloBoard = () => {
 
       {/* show add list component or add button */}
       {openAddList ? (
-        <form
-          onSubmit={handleSubmit}
-          className="bg-slate-800 p-3 rounded shadow-md min-w-[280px] flex flex-col gap-3"
-        >
-          <div className="form-group w-full">
-            <input
-              type="text"
-              className="w-full bg-slate-600 p-1 rounded"
-              autoFocus
-              value={listTitle}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="cta flex gap-2">
-            <button className="bg-indigo-500 rounded flex items-center justify-center gap-2 p-1 flex-1">
-              <FaPlus />
-              Add List
-            </button>
-            <button
-              type="button"
-              className="bg-red-500 rounded flex items-center justify-center gap-2 py-1 px-2"
-              onClick={() => reset()}
-            >
-              <FaPlus className="rotate-45" />
-              Cancel
-            </button>
-          </div>
-        </form>
+        <>
+          <FormWrapper
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            inputValue={listTitle}
+            handleCancel={reset}
+            submitButtonTitle="Add List"
+            cancelButtonTitle="Cancel"
+          />
+        </>
       ) : (
         <div className="add__trello__btn">
           <button
