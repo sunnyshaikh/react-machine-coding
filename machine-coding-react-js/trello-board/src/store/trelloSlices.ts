@@ -35,6 +35,7 @@ const trelloSlice = createSlice({
   name: "trelloSlice",
   initialState,
   reducers: {
+    // list updates
     addList(state, action: PayloadAction<string>) {
       const newList: TrelloCardsType = {
         id: Date.now(),
@@ -49,9 +50,16 @@ const trelloSlice = createSlice({
       saveToLocalStorage(filteredState);
       return filteredState;
     },
+    editListTitle(state, action: PayloadAction<{ id: number; title: string }>) {
+      const { id, title } = action.payload;
+      const updatedList = state.map((lists) =>
+        lists.id === id ? { ...lists, title } : lists
+      );
+      return updatedList;
+    },
   },
 });
 
-export const { addList, deleteList } = trelloSlice.actions;
+export const { addList, deleteList, editListTitle } = trelloSlice.actions;
 
 export default trelloSlice.reducer;
