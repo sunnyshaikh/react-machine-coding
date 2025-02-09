@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TrelloCardsType } from "../components/trello/type";
+import { TrelloCardsType, TrelloCardType } from "../components/trello/type";
 
 // sample data
 // [
@@ -55,11 +55,29 @@ const trelloSlice = createSlice({
       const updatedList = state.map((lists) =>
         lists.id === id ? { ...lists, title } : lists
       );
+      saveToLocalStorage(updatedList);
+      return updatedList;
+    },
+
+    // cards
+    addCard(state, action) {
+      const newCard: TrelloCardType = {
+        id: Date.now(),
+        title: action.payload.title,
+        isEditing: false,
+      };
+      const updatedList = state.map((list) =>
+        list.id === action.payload.id
+          ? { ...list, cards: [...list.cards, newCard] }
+          : list
+      );
+      saveToLocalStorage(updatedList);
       return updatedList;
     },
   },
 });
 
-export const { addList, deleteList, editListTitle } = trelloSlice.actions;
+export const { addList, deleteList, editListTitle, addCard } =
+  trelloSlice.actions;
 
 export default trelloSlice.reducer;

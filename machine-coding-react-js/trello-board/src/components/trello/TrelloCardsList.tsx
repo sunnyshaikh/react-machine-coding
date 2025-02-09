@@ -3,9 +3,25 @@ import { FaPlus, FaTrash } from "react-icons/fa";
 import { TrelloCardsType } from "./type";
 import TrelloCard from "./TrelloCard";
 import { useDispatch } from "react-redux";
-import { deleteList, editListTitle } from "../../store/trelloSlices";
+import { deleteList, editListTitle, addCard } from "../../store/trelloSlices";
+import FormWrapper from "../dynamicForm/FormWrapper";
 
 const TrelloCardsList = React.memo(({ cards }: { cards: TrelloCardsType }) => {
+  const [openAdd, setOpenApp] = useState(false);
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    dispatch(addCard({ id: cards.id, title: input }));
+    setInput("");
+    setOpenApp(false);
+  };
+
   return (
     <div className="trello__card bg-slate-800 p-3 rounded shadow-md min-w-[280px]">
       <TrelloListHeader cards={cards} />
@@ -13,9 +29,24 @@ const TrelloCardsList = React.memo(({ cards }: { cards: TrelloCardsType }) => {
         {cards.cards.map((card) => (
           <TrelloCard key={card.id} card={card} listId={cards.id} />
         ))}
-        <div className="flex items-center gap-3">
-          <FaPlus /> Add card
-        </div>
+        {openAdd ? (
+          <>
+            <FormWrapper
+              handleCancel={() => setOpenApp(false)}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              inputValue={input}
+              submitButtonTitle="Add Card"
+            />
+          </>
+        ) : (
+          <button
+            className="flex items-center gap-3"
+            onClick={() => setOpenApp(true)}
+          >
+            <FaPlus /> Add card
+          </button>
+        )}
       </div>
     </div>
   );
