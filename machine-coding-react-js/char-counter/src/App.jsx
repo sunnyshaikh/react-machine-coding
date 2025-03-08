@@ -1,7 +1,9 @@
+import Navbar from "./components/Navbar";
+
 const App = () => {
   return (
-    <main>
-      <h1 className="text-red-500">Hello world!</h1>
+    <main className="h-screen w-screen bg-slate-900 text-white">
+      <Navbar />
     </main>
   );
 };
