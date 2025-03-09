@@ -71,17 +71,17 @@ const CharCounterMain = () => {
       {/* cards */}
       <div className="cards-container mt-10 grid md:grid-cols-3 gap-4">
         <Card
-          className="bg-purple-300 text-black"
+          className="bg-gradient-to-br from-purple-300 to-purple-600 text-black"
           value={charCount}
           label="Total Characters"
         />
         <Card
-          className="bg-orange-400 text-black"
+          className="bg-gradient-to-br from-orange-300 to-orange-600 text-black"
           value={wordCount}
           label="Word Count"
         />
         <Card
-          className="bg-red-400 text-black"
+          className="bg-gradient-to-br from-red-400 to-red-600 text-black"
           value={sentenceCount}
           label="Sentence Count"
         />
