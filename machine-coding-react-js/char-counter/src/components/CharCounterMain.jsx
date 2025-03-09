@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import Card from "./Card";
+import LetterDensity from "./LetterDensity";
 
 // utility to format count
 const formatCount = (count) => (count < 10 ? `0${count}` : String(count));
@@ -85,6 +86,11 @@ const CharCounterMain = () => {
           value={sentenceCount}
           label="Sentence Count"
         />
+      </div>
+
+      {/* letter density */}
+      <div className="letter-density-container mt-10">
+        <LetterDensity text={formData.text} />
       </div>
     </div>
   );
