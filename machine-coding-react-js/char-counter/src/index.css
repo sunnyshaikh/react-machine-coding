@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+:root {
+  font-family: "Poppins", sans-serif;
+}
+
 @utility container {
   width: min(1024px, 100%);
   margin: auto;
